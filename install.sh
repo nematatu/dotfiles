@@ -43,6 +43,7 @@ for dir in "${SCRIPT_DIR}"/*/; do
 done 
 
 ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/mise.toml"
+
 if[[ "$(which mise)" != "" ]]; then
     mise install
 else
