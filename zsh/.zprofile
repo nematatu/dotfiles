@@ -27,3 +27,6 @@ fi
 if [ -n "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
 fi
+
+# dotfiles/.bin/ ローカルの.bin/ と分けて管理
+export PATH="$HOME/dotfiles/.bin:$PATH"
