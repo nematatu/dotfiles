@@ -55,3 +55,4 @@ if ! which node; then
 fi
 
 echo "finish setup!👍"
+echo "raycastの設定をimportしてください"
