@@ -1,0 +1,131 @@
+[
+	{
+		"key": "ctrl+shift+n",
+		"command": "explorer.newFile"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "shift+cmd+p",
+		"command": "-workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+shift+e",
+		"command": "workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "shift+cmd+e",
+		"command": "-workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "cmd+t",
+		"command": "workbench.action.showAllSymbols"
+	},
+	{
+		"key": "cmd+t",
+		"command": "-workbench.action.showAllSymbols"
+	},
+	{
+		"key": "[IntlYen] backspace",
+		"command": "editor.action.transposeLetters",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "-editor.action.transposeLetters",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "workbench.action.terminal.focus",
+		"when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+	},
+	{
+		"key": "cmd+down",
+		"command": "-workbench.action.terminal.focus",
+		"when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "workbench.action.tasks.runTask",
+		"when": "editorTextFocus",
+		"args": "CheckTestCase"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "workbench.action.tasks.runTask",
+		"when": "editorTextFocus",
+		"args": "SubmitCode"
+	},
+	{
+		"key": "ctrl+k i",
+		"command": "workbench.panel.chat.view.copilot.focus"
+	},
+	{
+		"key": "ctrl+d i",
+		"command": "editor.action.revealDefinition",
+		"when": "editorHasDefinitionProvider && editorTextFocus"
+	},
+	{
+		"key": "f12",
+		"command": "-editor.action.revealDefinition",
+		"when": "editorHasDefinitionProvider && editorTextFocus"
+	},
+	{
+		"key": "ctrl+j i",
+		"command": "extension.jumpy-word",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "Escape",
+		"command": "extension.jumpy-exit",
+		"when": "editorTextFocus && jumpy.isJumpyMode"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "workbench.view.extensions",
+		"when": "viewContainer.workbench.view.extensions.enabled"
+	},
+	{
+		"key": "shift+cmd+x",
+		"command": "-workbench.view.extensions",
+		"when": "viewContainer.workbench.view.extensions.enabled"
+	},
+	{
+		"key": "shift+cmd+g",
+		"command": "workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "ctrl+shift+g",
+		"command": "-workbench.view.scm",
+		"when": "workbench.scm.active"
+	},
+	{
+		"key": "shift+cmd+g",
+		"command": "workbench.view.scm",
+		"when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+	},
+	{
+		"key": "ctrl+shift+g",
+		"command": "-workbench.view.scm",
+		"when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+	},
+	{
+		"key": "ctrl+k m",
+		"command": "workbench.action.toggleMaximizedPanel",
+		"when": "terminal.active"
+	},
+	{
+		"key": "ctrl+k t",
+		"command": "editor.emmet.action.wrapWithAbbreviation"
+	},
+	{
+		"key": "ctrl+k o",
+		"command": "editor.emmet.action.balanceOut"
+	}
+]

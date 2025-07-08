@@ -1,0 +1,190 @@
+{
+    "emmet.variables": {
+        "lang": "ja"
+    },
+    "java.home": "C:\\Users\\user\\AppData\\Local\\Programs\\AdoptOpenJDK\\",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.help.firstView": "gettingStarted",
+    "java.semanticHighlighting.enabled": true,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "terminal.integrated.tabs.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "redhat.telemetry.enabled": true,
+    "cmake.configureOnOpen": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "dart.previewFlutterUiGuides": true,
+    "editor.parameterHints.enabled": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "dart.debugExternalPackageLibraries": true,
+    "dart.debugSdkLibraries": true,
+    "git.openRepositoryInParentFolders": "never",
+    "dart.showInspectorNotificationsForWidgetErrors": false,
+    "workbench.editorAssociations": {
+        "*.png のコピー": "default",
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
+    "window.titleBarStyle": "custom",
+    "code-runner.runInTerminal": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "livePreview.notifyOnOpenLooseFile": false,
+    "explorer.confirmDragAndDrop": false,
+    "vsnotes.defaultNotePath": "/Users/nekantatsuju/Library/CloudStorage/GoogleDrive-nematatu1003@gmail.com/マイドライブ/VSNotes",
+    "vsnotes.tokens": [
+        {
+            "type": "datetime",
+            "token": "{dt}",
+            "format": "YYYYMMDD",
+            "description": "Insert formatted datetime."
+        },
+        {
+            "type": "title",
+            "token": "{title}",
+            "description": "Insert note title from input box.",
+            "format": "Untitled"
+        },
+        {
+            "type": "extension",
+            "token": "{ext}",
+            "description": "Insert file extension.",
+            "format": "md"
+        }
+    ],
+    "vsnotes.templates": [
+        "tags"
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "window.openFoldersInNewWindow": "off",
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "afterDelay",
+    "remote.SSH.remoteServerListenOnSocket": true,
+    "remote.SSH.remotePlatform": {
+        "133.54.224.140": "linux",
+        "133.54.224.141": "linux",
+        "133.54.224.209": "linux"
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
+        "editor.snippetSuggestions": "top"
+    },
+    "editor.fontVariations": false,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Monaspace Krypton",
+    "http-server.port": 3000,
+    "editor.formatOnSave": true,
+    "flake8.args": [
+        "--config=.flake8"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnType": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "vscode_custom_css.imports": [
+        "https://gist.githubusercontent.com/nematatu/c0bc9cd1b91a551a1e3eb96678a9b9e4/raw/8fb31d220402b36c3153a3d5f140c110727fb54d/gistfile1.css",
+        "file:///Users/nekantatsuju/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+    ],
+    "background.autoInstall": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "python.createEnvironment.trigger": "off",
+    "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.compositeKeys": {
+        "jj": {
+            "command": "vscode-neovim.escape"
+        }
+    },
+    "markdown-preview-enhanced.enablePreviewZenMode": false,
+    "markdown-preview-enhanced.revealjsTheme": "beige.css",
+    "markdown-preview-enhanced.previewTheme": "github-light.css",
+    "liveServer.settings.donotVerifyTags": true,
+    "editor.accessibilitySupport": "off",
+    "accessibility.signals.lineHasError": {
+        "sound": "off"
+    },
+    "accessibility.signals.progress": {
+        "sound": "off"
+    },
+    "accessibility.signals.voiceRecordingStarted": {
+        "sound": "off"
+    },
+    "accessibility.signals.voiceRecordingStopped": {
+        "sound": "off"
+    },
+    "accessibility.signals.noInlayHints": {
+        "sound": "off"
+    },
+    "accessibility.signals.chatResponseReceived": {
+        "sound": "off"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.minimap.enabled": false,
+    "gitlens.ai.experimental.model": "vscode",
+    "gitlens.ai.experimental.vscode.model": "copilot:gpt-4o",
+    "git.ignoreRebaseWarning": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "terminal.integrated.fontLigatures.enabled": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.autoFormatConfigFile": true,
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.mouseWheelScrollSensitivity": 0.3,
+    "workbench.list.mouseWheelScrollSensitivity": 0.3,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.3,
+    "explorer.compactFolders": false,
+    "editor.renderLineHighlight": "all",
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "window.title": " ",
+    "editor.hover.enabled": false,
+    "git.enableSmartCommit": true,
+    "workbench.colorTheme": "Noctis Minimus"
+}
