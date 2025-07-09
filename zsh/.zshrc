@@ -1,39 +1,5 @@
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-ZSH_THEME="robbyrussell"
-plugins=(
-    git
-    mise
-)
-source $HOME/.local/bin/antigen.zsh
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-   # Bundles from the default repo (robbyrussell's oh-my-zsh)
-   git
-   # Syntax highlighting bundle.
-   zsh-users/zsh-syntax-highlighting
-   # Fish-like auto suggestions
-   zsh-users/zsh-autosuggestions
-   # Extra zsh completions
-   zsh-users/zsh-completions
-   # z
-   rupa/z z.sh
-   # abbr
-   olets/zsh-abbr@main
-EOBUNDLES
-THEME=denysdovhan/spaceship-prompt
-antigen list | grep $THEME; if [ $? -ne 0 ]; then antigen theme $THEME; fi
-antigen apply
-
-fpath=(~/.zsh/completion $fpath)
-autoload -U compinit
-compinit -u
-source ~/.zsh/git-prompt.sh
-setopt PROMPT_SUBST
-PS1='[%n@%m %c$(__git_ps1 " (%s)")]%% '
-
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin:/usr/local/sbin:/Users/nekantatsuju/.local/bin:/Users/nekantatsuju/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/nekantatsuju/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-autosuggestions:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-completions:/Users/nekantatsuju/.antigen/bundles/olets/zsh-abbr-main:/Users/nekantatsuju/.antigen/bundles/denysdovhan/spaceship-prompt:/Users/nekantatsuju/local_dev/cogp/:/Users/nekantatsuju/local_dev/cmprs/:/Users/nekantatsuju/local_dev/cmprsgif/:/Users/nekantatsuju/local_dev/bin
 export PATH="/opt/local/bin:$PATH"
 

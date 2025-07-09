@@ -7,7 +7,7 @@ PATH="$PATH:/opt/homebrew/bin"
 if [ "$(uname)" = "Darwin" ]; then
     if ! type brew &> /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
-    else 
+    else
         echo "HomeBrew is already installed."
     fi
 else
@@ -40,7 +40,7 @@ for dir in "${SCRIPT_DIR}"/*/; do
             ln -fnsv "$dotfile" "$TARGET_PATH"
         fi
     done
-done 
+done
 
 # --- Neovimの設定 ---
 NVIM_CONFIG_SRC="${SCRIPT_DIR}/nvim"
@@ -72,7 +72,7 @@ if [[ "$(which mise)" != "" ]]; then
 else
     echo "install the mise command"
 fi
- 
+
 if ! which node; then
     $(/opt/homebrew/bin/brew --prefix)/bin/mise use --global node
 fi
