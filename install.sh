@@ -58,7 +58,7 @@ if [ -e "$NVIM_CONFIG_DST" ] && [ ! -L "$NVIM_CONFIG_DST" ]; then
 fi
 
 # シンボリックリンクを作成（既に存在する場合は上書き）
-ln -sf "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
+ln -fnsv "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
 
 ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
 
@@ -66,6 +66,10 @@ ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
 SHELDON_CONFIG_DST="${HOME}/.config/sheldon"
 mkdir -p "$SHELDON_CONFIG_DST"
 ln -fnsv "${SCRIPT_DIR}/sheldon/plugins.toml" "${HOME}/.config/sheldon/plugins.toml"
+
+KARABINER_CONFIG_DST="${HOME}/.config/karabiner"
+mkdir -p "$KARABINER_CONFIG_DST"
+ln -fnsv "${SCRIPT_DIR}/karabinerElements/karabiner.json" "${HOME}/.config/karabiner/mise.toml"
 
 if [[ "$(which mise)" != "" ]]; then
     mise install
