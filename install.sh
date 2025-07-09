@@ -32,7 +32,7 @@ for dir in "${SCRIPT_DIR}"/*/; do
 
     for dotfile in "${dir}".??* ; do
         if [[ -f "$dotfile" ]]; then
-            TARGET_PATH="$HOME/$(basename "$dotfile"")"
+            TARGET_PATH="$HOME/$(basename "$dotfile")"
             if [[ -e "$TARGET_PATH" && ! -L "$TARGET_PATH" ]]; then
                 echo "Backing up extisting file: $TARGET_PATH -> ${TARGET_PATH}.backup.${TIMESTAMP}"
                 mv "$TARGET_PATH" "${TARGET_PATH}.backup.${TIMESTAMP}"

@@ -1,0 +1,518 @@
+{
+	"profiles": [
+		{
+			"complex_modifications": {
+				"parameters": {
+					"mouse_motion_to_scroll.speed": 230
+				},
+				"rules": [
+					{
+						"description": "コマンドキー（左右どちらでも）を単体で押したときに、英数・かなをトグルで切り替える。 (rev 2)",
+						"enabled": false,
+						"manipulators": [
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "ja"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "left_command",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"parameters": {
+									"basic.to_if_held_down_threshold_milliseconds": 100
+								},
+								"to": [
+									{
+										"key_code": "left_command",
+										"lazy": true
+									}
+								],
+								"to_if_alone": [
+									{
+										"key_code": "japanese_eisuu"
+									}
+								],
+								"to_if_held_down": [
+									{
+										"key_code": "left_command"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "en"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "left_command",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"parameters": {
+									"basic.to_if_held_down_threshold_milliseconds": 100
+								},
+								"to": [
+									{
+										"key_code": "left_command",
+										"lazy": true
+									}
+								],
+								"to_if_alone": [
+									{
+										"key_code": "japanese_kana"
+									}
+								],
+								"to_if_held_down": [
+									{
+										"key_code": "left_command"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "ja"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "right_command",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"parameters": {
+									"basic.to_if_held_down_threshold_milliseconds": 100
+								},
+								"to": [
+									{
+										"key_code": "right_command",
+										"lazy": true
+									}
+								],
+								"to_if_alone": [
+									{
+										"key_code": "japanese_eisuu"
+									}
+								],
+								"to_if_held_down": [
+									{
+										"key_code": "right_command"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "en"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "right_command",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"parameters": {
+									"basic.to_if_held_down_threshold_milliseconds": 100
+								},
+								"to": [
+									{
+										"key_code": "right_command",
+										"lazy": true
+									}
+								],
+								"to_if_alone": [
+									{
+										"key_code": "japanese_kana"
+									}
+								],
+								"to_if_held_down": [
+									{
+										"key_code": "right_command"
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": "New Rule (change left_shift+caps_lock to page_down, right_shift+caps_lock to left_command+mission_control)",
+						"enabled": false,
+						"manipulators": [
+							{
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"mandatory": ["control"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "comma"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"mandatory": ["shift"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "comma",
+										"modifiers": ["shift"]
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": "Comma key customizations for input source toggle and control",
+						"enabled": false,
+						"manipulators": [
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "ja"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "japanese_eisuu"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"conditions": [
+									{
+										"input_sources": [
+											{
+												"language": "en"
+											}
+										],
+										"type": "input_source_if"
+									}
+								],
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "japanese_kana"
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": "Change left_control + Q/E to Home/End",
+						"manipulators": [
+							{
+								"from": {
+									"key_code": "k",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "left_arrow",
+										"modifiers": ["command"]
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "right_arrow",
+										"modifiers": ["command"]
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": "underscore to backslash",
+						"manipulators": [
+							{
+								"from": {
+									"key_code": "international1"
+								},
+								"to": [
+									{
+										"key_code": "international3",
+										"modifiers": ["option"]
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": "Change left_control + W/A/S/D to Arrow Keys",
+						"manipulators": [
+							{
+								"from": {
+									"key_code": "e",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "up_arrow"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "s",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "left_arrow"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "d",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "down_arrow"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "f",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "right_arrow"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "semicolon",
+									"modifiers": {
+										"optional": ["caps_lock"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "return_or_enter"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "semicolon",
+									"modifiers": {
+										"mandatory": ["control"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "semicolon"
+									}
+								],
+								"type": "basic"
+							},
+							{
+								"from": {
+									"key_code": "semicolon",
+									"modifiers": {
+										"mandatory": ["fn"],
+										"optional": ["any"]
+									}
+								},
+								"to": [
+									{
+										"key_code": "delete_or_backspace"
+									}
+								],
+								"type": "basic"
+							}
+						]
+					}
+				]
+			},
+			"devices": [
+				{
+					"identifiers": {
+						"is_keyboard": true,
+						"product_id": 641,
+						"vendor_id": 1452
+					},
+					"simple_modifications": [
+						{
+							"from": {
+								"key_code": "japanese_eisuu"
+							},
+							"to": [
+								{
+									"key_code": "fn"
+								}
+							]
+						}
+					]
+				},
+				{
+					"disable_built_in_keyboard_if_exists": true,
+					"identifiers": {
+						"is_keyboard": true,
+						"product_id": 34050,
+						"vendor_id": 2652
+					},
+					"simple_modifications": [
+						{
+							"from": {
+								"key_code": "caps_lock"
+							},
+							"to": [
+								{
+									"key_code": "japanese_eisuu"
+								}
+							]
+						},
+						{
+							"from": {
+								"key_code": "left_command"
+							},
+							"to": [
+								{
+									"key_code": "left_option"
+								}
+							]
+						},
+						{
+							"from": {
+								"key_code": "left_option"
+							},
+							"to": [
+								{
+									"key_code": "left_command"
+								}
+							]
+						},
+						{
+							"from": {
+								"key_code": "right_option"
+							},
+							"to": [
+								{
+									"key_code": "japanese_kana"
+								}
+							]
+						}
+					]
+				},
+				{
+					"identifiers": {
+						"is_keyboard": true,
+						"is_pointing_device": true,
+						"product_id": 45072,
+						"vendor_id": 1133
+					},
+					"ignore": false,
+					"mouse_flip_vertical_wheel": true
+				},
+				{
+					"identifiers": {
+						"is_pointing_device": true,
+						"product_id": 45121,
+						"vendor_id": 1133
+					},
+					"ignore": false,
+					"mouse_flip_vertical_wheel": true
+				}
+			],
+			"name": "New profile",
+			"selected": true,
+			"virtual_hid_keyboard": {
+				"keyboard_type_v2": "jis",
+				"mouse_key_xy_scale": 140
+			}
+		}
+	]
+}
