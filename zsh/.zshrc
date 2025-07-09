@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin:/usr/local/sbin:/Users/nekantatsuju/.local/bin:/Users/nekantatsuju/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/nekantatsuju/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-autosuggestions:/Users/nekantatsuju/.antigen/bundles/zsh-users/zsh-completions:/Users/nekantatsuju/.antigen/bundles/olets/zsh-abbr-main:/Users/nekantatsuju/.antigen/bundles/denysdovhan/spaceship-prompt:/Users/nekantatsuju/local_dev/cogp/:/Users/nekantatsuju/local_dev/cmprs/:/Users/nekantatsuju/local_dev/cmprsgif/:/Users/nekantatsuju/local_dev/bin
@@ -26,6 +29,3 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --color=always {} | head -2
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/bin:$PATH"
 eval "$(mise activate zsh)"
-
-autoload -Uz compinit
-compinit
