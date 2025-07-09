@@ -26,3 +26,6 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --color=always {} | head -2
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/bin:$PATH"
 eval "$(mise activate zsh)"
+
+autoload -Uz compinit
+compinit
