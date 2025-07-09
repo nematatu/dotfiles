@@ -71,5 +71,5 @@ if ! which node; then
     $(/opt/homebrew/bin/brew --prefix)/bin/mise use --global node
 fi
 
-echo "finish setup!👍"
+echo "finish setup!✨"
 echo "raycastの設定をimportしてください"
