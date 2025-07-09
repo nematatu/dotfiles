@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -uexo pipefail
+set -ueo pipefail
 
 PATH="$PATH:/opt/homebrew/bin"
 
