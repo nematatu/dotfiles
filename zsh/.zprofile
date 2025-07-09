@@ -15,6 +15,10 @@ fi
 if [ -z "$(command -v brew)" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Set Sheldon
+eval "$(sheldon source)"
+
 # prioritize brew path (brew 管理の git などを優先させるため)
 export PATH="/opt/homebrew/bin/:$PATH"
 

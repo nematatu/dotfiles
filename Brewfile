@@ -15,6 +15,7 @@ brew "lazygit"
 brew "lua-language-server"
 brew "ripgrep"
 brew "tree"
+brew "sheldon"
 
 # cask
 cask 'google-chrome'
