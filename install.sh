@@ -64,8 +64,8 @@ ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
 
 # .configディレクトリがなければ作成
 SHELDON_CONFIG_DST="${HOME}/.config/sheldon"
-mkdir -p "$(dirname "$SHELDON_CONFIG_DST")"
-ln -fnsv "${SCRIPT_DIR}/sheldon/plugins.toml" "${HOME}/.config/sheldon/"
+mkdir -p "$SHELDON_CONFIG_DST"
+ln -fnsv "${SCRIPT_DIR}/sheldon/plugins.toml" "${HOME}/.config/sheldon/plugins.toml"
 
 if [[ "$(which mise)" != "" ]]; then
     mise install
