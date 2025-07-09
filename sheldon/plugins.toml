@@ -1,11 +1,6 @@
 # sheldon/plugins.toml
 shell = "zsh"
 
-# oh-my-zshのgitプラグイン
-[plugins.git]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/git"
-
 # シンタックスハイライト
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
@@ -17,6 +12,11 @@ github = "zsh-users/zsh-autosuggestions"
 # zshの補完を強化
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+
+# ディレクトリ移動を効率化するz
+[plugins.z]
+github = "rupa/z"
+file = "z.sh"
 
 # エイリアス管理
 [plugins.zsh-abbr]
