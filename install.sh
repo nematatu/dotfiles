@@ -42,6 +42,23 @@ for dir in "${SCRIPT_DIR}"/*/; do
     done
 done 
 
+# --- Neovimの設定 ---
+NVIM_CONFIG_SRC="${SCRIPT_DIR}/nvim"
+NVIM_CONFIG_DST="${HOME}/.config/nvim"
+
+echo "Creating symlink for Neovim config..."
+
+# .configディレクトリがなければ作成
+mkdir -p "$(dirname "$NVIM_CONFIG_DST")"
+
+# 既存のnvim設定があればバックアップを作成
+if [ -e "$NVIM_CONFIG_DST" ] && [ ! -L "$NVIM_CONFIG_DST" ]; then
+    echo "Backing up existing nvim config to ${NVIM_CONFIG_DST}.bak"
+    mv "$NVIM_CONFIG_DST" "${NVIM_CONFIG_DST}.bak"
+fi
+
+# シンボリックリンクを作成（既に存在する場合は上書き）
+ln -sf "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
 ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/mise.toml"
 
 if [[ "$(which mise)" != "" ]]; then
