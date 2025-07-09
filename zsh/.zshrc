@@ -2,11 +2,11 @@
 
 export PATH="/opt/homebrew/bin:$PATH"
 
-eval "$(sheldon source)"
-eval "$(mise activate zsh)"
-
 autoload -Uz compinit
 compinit
+
+eval "$(sheldon source)"
+eval "$(mise activate zsh)"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow'
 export FZF_DEFAULT_OPTS="
