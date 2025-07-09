@@ -61,7 +61,7 @@ fi
 ln -sf "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
 
 ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
-ln -fnsv "${SCRIPT_DIR}/sheldon/packages.toml" "${HOME}/.config/sheldon/plugins.toml"
+ln -fnsv "${SCRIPT_DIR}/sheldon/plugins.toml" "${HOME}/.config/sheldon/plugins.toml"
 
 if [[ "$(which mise)" != "" ]]; then
     mise install
