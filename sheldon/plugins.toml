@@ -18,11 +18,6 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-# ディレクトリ移動を効率化するz
-[plugins.z]
-github = "rupa/z"
-file = "z.sh"
-
 # エイリアス管理
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
