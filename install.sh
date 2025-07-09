@@ -59,7 +59,8 @@ fi
 
 # シンボリックリンクを作成（既に存在する場合は上書き）
 ln -sf "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
-ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/mise.toml"
+
+ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
 
 if [[ "$(which mise)" != "" ]]; then
     mise install
