@@ -96,3 +96,25 @@ defaults write -g com.apple.trackpad.scrolling -float 0.5882
 defaults write -g com.apple.trackpad.scaling -int 3 
 # 長押しで連続入力
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+## アニメーション無効
+
+## ウィンドウを開閉するときのアニメーションを無効
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+## ウィンドウサイズを調整する際の加速再生
+defaults write -g NSWindowResizeTime -float 0.001
+
+## Finderで情報ウィンドウを開くときのアニメーションを無効
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+## Quick Lookウィンドウのアニメーションをオフ
+defaults write -g QLPanelAnimationDuration -float 0
+
+## Dockからアプリを起動するときのアニメーションを無効
+defaults write com.apple.dock launchanim -bool false
+# 動きを高速化
+defaults write -g com.apple.trackpad.scaling 3 && \
+defaults write -g com.apple.mouse.scaling 1.5 && \
+defaults write -g KeyRepeat -int 1 && \
+defaults write -g InitialKeyRepeat -int 10
