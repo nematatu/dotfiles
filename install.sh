@@ -84,7 +84,7 @@ if ! which node; then
     $(/opt/homebrew/bin/brew --prefix)/bin/mise use --global node
 fi
 
-sh "${SCRIPT_DIR}"/dotfiles/defaults/defaults.sh
+sh "${SCRIPT_DIR}/defaults/defaults.sh"
 
 echo "finish setup!✨"
 echo "raycastの設定をimportしてください"
