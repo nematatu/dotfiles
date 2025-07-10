@@ -87,7 +87,7 @@ defaults write com.apple.screencapture type -string "png"
 # スクロールバーを常時表示する
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # キーリピートの速度
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true#defaults write NSGlobalDomain KeyRepeat -int 1 
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 # キーリピート開始までのタイミング
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 # スクロール速度を自分好みに
