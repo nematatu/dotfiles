@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  check-install.sh:
+  check-install-sh:
     name: Test install.sh
     runs-on: macos-latest
     steps:
