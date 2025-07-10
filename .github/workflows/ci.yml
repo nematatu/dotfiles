@@ -10,7 +10,7 @@ jobs:
     brew-check:
        name: Brew Bundle Check
        # brewコマンドはmacOSでのみ利用可能
-       runs-:n: macos-latest
+       runs-on: macos-latest
        # lintジョブが成功してから実行
        needs: lint
        steps:
