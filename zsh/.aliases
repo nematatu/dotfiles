@@ -1,17 +1,14 @@
-alias systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
+abbr systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
 
-alias g='git'
-alias gb='git branch'
-alias ga.='git add .'
-# alias gcm='git commit -m'
+abbr g='git'
+abbr ga.='git add .'
 abbr -S -qq gcm='git commit -m'
-alias gpo='git push origin'
+abbr gpo='git push origin'
+abbr v='nvim'
 
 alias cd='cd_func'
 cd_func() {
   builtin cd "$@" && eza --icons
 }
-
 alias imgcat='/Users/nekantatsuju/.iterm2/imgcat'
 alias ls='eza -a --icons'
-alias v='nvim'
