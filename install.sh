@@ -81,6 +81,8 @@ if ! which node; then
     $(/opt/homebrew/bin/brew --prefix)/bin/mise use --global node
 fi
 
+sh ~/dotfiles/defaults/defaults.sh
+
 echo "finish setup!✨"
 echo "raycastの設定をimportしてください"
 echo "ghコマンドでGitHub認証を行ってください"
