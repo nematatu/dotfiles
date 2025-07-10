@@ -19,7 +19,7 @@ jobs:
 
       - name: Run brew bundle check
         run: |
-          brew bundle check
+          brew bundle install
 
   # --- JOB 3: Test install.sh ---
   # install.shが実行可能かテストするジョブ。
@@ -51,13 +51,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check shell script syntax
-        run: bash -n ./defaults.sh
+        run: bash -n ./defaults/defaults.sh
 
       - name: Make script executable
-        run: chmod +x ./defaults.sh
+        run: chmod +x ./defaults/defaults.sh
 
       - name: Execute defaults.sh
-        run: ./defaults.sh
-        # このスクリプトはsudoやdefaultsコマンドを実行しますが、
-        # GitHub ActionsのmacOSランナーではパスワードなしsudoが可能です。
-        # 環境は使い捨てなので、システム設定の変更も問題ありません。
+        run: ./defaults/defaults.sh
