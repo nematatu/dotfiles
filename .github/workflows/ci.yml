@@ -1,65 +1,80 @@
 name: Dotfiles CI
 
-on: 
-  push: 
+on:
+  push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 
-jobs: 
-    brew-check:
-       name: Brew Bundle Check
-       # brewコマンドはmacOSでのみ利用可能
-       runs-on: macos-latest
-       # lintジョブが成功してから実行
-       needs: lint
-       steps:
-         - name: Checkout repository
-           uses: actions/checkout@v4
-   
-         - name: Run brew bundle check
-           run: |
-             brew bundle check
-   
-     # --- JOB 3: Test install.sh ---
-     # install.shが実行可能かテストするジョブ。
-     test-install-script:
-       name: Test install.sh
-       runs-on: macos-latest
-       needs: lint
-       steps:
-         - name: Checkout repository
-           uses: actions/checkout@v4
-   
-         - name: Check shell script syntax
-           run: bash -n ./install.sh
-   
-         - name: Make script executable
-           run: chmod +x ./install.sh
-   
-         - name: Execute install.sh
-           run: ./install.sh
-           # このスクリプトはシンボリックリンクを作成しますが、
-           # CI環境は使い捨てなので問題ありません。
-   
-     # --- JOB 4: Test defaults.sh ---
-     # defaults.shが実行可能かテストするジョブ。
-     test-defaults-script:
-       name: Test defaults.sh
-       runs-on: macos-latest
-       needs: lint
-       steps:
-         - name: Checkout repository
-           uses: actions/checkout@v4
-   
-         - name: Check shell script syntax
-           run: bash -n ./defaults.sh
-   
-         - name: Make script executable
-           run: chmod +x ./defaults.sh
-   
-         - name: Execute defaults.sh
-           run: ./defaults.sh
-           # このスクリプトはsudoやdefaultsコマンドを実行しますが、
-           # GitHub ActionsのmacOSランナーではパスワードなしsudoが可能です。
-           # 環境は使い捨てなので、システム設定の変更も問題ありません。
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: github/super-linter@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  brew-check:
+    name: Brew Bundle Check
+    # brewコマンドはmacOSでのみ利用可能
+    runs-on: macos-latest
+    # lintジョブが成功してから実行
+    needs: lint
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run brew bundle check
+        run: |
+          brew bundle check
+
+  # --- JOB 3: Test install.sh ---
+  # install.shが実行可能かテストするジョブ。
+  test-install-script:
+    name: Test install.sh
+    runs-on: macos-latest
+    needs: lint
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check shell script syntax
+        run: bash -n ./install.sh
+
+      - name: Make script executable
+        run: chmod +x ./install.sh
+
+      - name: Execute install.sh
+        run: ./install.sh
+        # このスクリプトはシンボリックリンクを作成しますが、
+        # CI環境は使い捨てなので問題ありません。
+
+  # --- JOB 4: Test defaults.sh ---
+  # defaults.shが実行可能かテストするジョブ。
+  test-defaults-script:
+    name: Test defaults.sh
+    runs-on: macos-latest
+    needs: lint
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check shell script syntax
+        run: bash -n ./defaults.sh
+
+      - name: Make script executable
+        run: chmod +x ./defaults.sh
+
+      - name: Execute defaults.sh
+        run: ./defaults.sh
+        # このスクリプトはsudoやdefaultsコマンドを実行しますが、
+        # GitHub ActionsのmacOSランナーではパスワードなしsudoが可能です。
+        # 環境は使い捨てなので、システム設定の変更も問題ありません。
