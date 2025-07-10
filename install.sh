@@ -60,7 +60,10 @@ fi
 # シンボリックリンクを作成（既に存在する場合は上書き）
 ln -fnsv "$NVIM_CONFIG_SRC" "$NVIM_CONFIG_DST"
 
-ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
+# --- miseの設定 ---
+MISE_CONFIG_DST="${HOME}/.config/mise"
+mkdir -p "$MISE_CONFIG_DST"
+ln -fnsv "${SCRIPT_DIR}/mise/mise.toml" "${MISE_CONFIG_DST}/mise.toml"
 
 # .configディレクトリがなければ作成
 SHELDON_CONFIG_DST="${HOME}/.config/sheldon"
@@ -69,7 +72,7 @@ ln -fnsv "${SCRIPT_DIR}/sheldon/plugins.toml" "${HOME}/.config/sheldon/plugins.t
 
 KARABINER_CONFIG_DST="${HOME}/.config/karabiner"
 mkdir -p "$KARABINER_CONFIG_DST"
-ln -fnsv "${SCRIPT_DIR}/karabinerElements/karabiner.json" "${HOME}/.config/karabiner/mise.toml"
+ln -fnsv "${SCRIPT_DIR}/karabinerElements/karabiner.json" "${KARABINER_CONFIG_DST}/karabiner.json"
 
 if [[ "$(which mise)" != "" ]]; then
     mise install
