@@ -84,3 +84,5 @@ fi
 echo "finish setup!✨"
 echo "raycastの設定をimportしてください"
 echo "ghコマンドでGitHub認証を行ってください"
+echo "karabinerElementsのdevicesの設定をしてください"
+echo "linearmouseの設定をしてください"
