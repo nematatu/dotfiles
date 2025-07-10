@@ -27,6 +27,7 @@ cask "font-hack-nerd-font"
 cask "visual-studio-code"
 cask "shottr"
 cask "cap"
+cask "linearmouse"
 
 #
 # # mas
