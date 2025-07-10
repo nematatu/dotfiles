@@ -1,10 +1,10 @@
-abbr systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
+abbr -S -qq systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
 
-abbr g='git'
-abbr ga.='git add .'
+abbr -S -qq g='git'
+abbr -S -qq ga.='git add .'
 abbr -S -qq gcm='git commit -m'
-abbr gpo='git push origin'
-abbr v='nvim'
+abbr -S -qq gpo='git push origin'
+abbr -S -qq v='nvim'
 
 alias cd='cd_func'
 cd_func() {
