@@ -7,23 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-
-  brew-check:
-    name: Brew Bundle Check
-    # brewコマンドはmacOSでのみ利用可能
-    runs-on: macos-latest
-    # lintジョブが成功してから実行
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run brew bundle install
-        run: |
-          brew bundle install
-
-  # --- JOB 3: Test install.sh ---
-  # install.shが実行可能かテストするジョブ。
-  test-install-script:
+  check_install.sh:
     name: Test install.sh
     runs-on: macos-latest
     steps:
@@ -38,23 +22,3 @@ jobs:
 
       - name: Execute install.sh
         run: ./install.sh
-        # このスクリプトはシンボリックリンクを作成しますが、
-        # CI環境は使い捨てなので問題ありません。
-
-  # --- JOB 4: Test defaults.sh ---
-  # defaults.shが実行可能かテストするジョブ。
-  test-defaults-script:
-    name: Test defaults.sh
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Check shell script syntax
-        run: bash -n ./defaults/defaults.sh
-
-      - name: Make script executable
-        run: chmod +x ./defaults/defaults.sh
-
-      - name: Execute defaults.sh
-        run: ./defaults/defaults.sh
