@@ -13,7 +13,6 @@ jobs:
     # brewコマンドはmacOSでのみ利用可能
     runs-on: macos-latest
     # lintジョブが成功してから実行
-    needs: lint
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,7 +26,6 @@ jobs:
   test-install-script:
     name: Test install.sh
     runs-on: macos-latest
-    needs: lint
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -48,7 +46,6 @@ jobs:
   test-defaults-script:
     name: Test defaults.sh
     runs-on: macos-latest
-    needs: lint
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
