@@ -16,7 +16,7 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-/opt/homebrew/bin/brew bundle install --file {SCRIPT_DIR}/Brewfile
+/opt/homebrew/bin/brew bundle install --file "${SCRIPT_DIR}/Brewfile"
 
 if ! type xcode-select &> /dev/null; then
     echo "start install Xcode CLT"
