@@ -84,7 +84,7 @@ if ! which node; then
     $(/opt/homebrew/bin/brew --prefix)/bin/mise use --global node
 fi
 
-sh ~/dotfiles/defaults/defaults.sh
+sh "${SCRIPT_DIR}"/dotfiles/defaults/defaults.sh
 
 echo "finish setup!✨"
 echo "raycastの設定をimportしてください"
@@ -92,3 +92,5 @@ echo "ghコマンドでGitHub認証を行ってください"
 echo "karabinerElementsのdevicesの設定をしてください"
 echo "linearmouseの設定をしてください"
 echo "google日本語入力で設定ファイルをimport & 英数字、記号をを半角に設定してください"
+echo "google日本語入力をデフォルトにしてください"
+echo "Chromeをデフォルトにしてください"
