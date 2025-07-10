@@ -1,2 +1,2 @@
 # dotfile
-git test
+git test2
