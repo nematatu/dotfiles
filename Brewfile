@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 # brew
 brew "git"
 brew "neovim"
