@@ -14,7 +14,9 @@ else
     echo "Not macOS!"
 fi
 
-/opt/homebrew/bin/brew bundle install --file ./Brewfile
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+/opt/homebrew/bin/brew bundle install --file {SCRIPT_DIR}/Brewfile
 
 if ! type xcode-select &> /dev/null; then
     echo "start install Xcode CLT"
@@ -23,7 +25,6 @@ else
     echo "Xcode CLT is already installed."
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
 for dir in "${SCRIPT_DIR}"/*/; do
