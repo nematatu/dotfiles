@@ -1,5 +1,3 @@
-[ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
-
 export PATH="/opt/homebrew/bin:$PATH"
 
 autoload -Uz compinit
@@ -7,6 +5,8 @@ compinit
 
 eval "$(sheldon source)"
 eval "$(mise activate zsh)"
+
+[ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow'
 export FZF_DEFAULT_OPTS="
