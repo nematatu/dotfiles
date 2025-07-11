@@ -27,3 +27,7 @@ export FZF_ALT_C_COMMAND='fd --type d'
 export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --color=always {} | head -200'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function gcd() {
+  cd $(ghq list -p | fzf)
+}

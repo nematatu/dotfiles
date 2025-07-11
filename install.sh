@@ -16,6 +16,7 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+softwareupdate --install-rosetta --agree-to-license
 /opt/homebrew/bin/brew bundle install --file "${SCRIPT_DIR}/Brewfile"
 
 if ! type xcode-select &> /dev/null; then

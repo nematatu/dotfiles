@@ -1,15 +1,15 @@
 # バッテリーのパーセントを表示
-defaults write com.apple.menuextra.battery ShowPercent -string "YES" 
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # battery 表示
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.battery" -bool true 
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.battery" -bool true
 # bluetooth 表示
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true 
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
 # volume 表示
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true 
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 # タップでクリックを有効
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1 
+defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 # Automatically hide or show the Dock （Dock を自動的に隠す）
 defaults write com.apple.dock autohide -bool true
 # Wipe all app icons from the Dock （Dock に標準で入っている全てのアプリを消す、Finder とごみ箱は消えない）
@@ -22,11 +22,11 @@ defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock wvous-br-corner -int 11
 defaults write com.apple.dock wvous-br-modifier -int 0
 # Dock をすぐに表示する
-defaults write com.apple.dock autohide-delay -float 0 
+defaults write com.apple.dock autohide-delay -float 0
 # Dock で開いているアプリケーションのプロセスインジケーターを表示する
-defaults write com.apple.dock show-process-indicators -bool true 
+defaults write com.apple.dock show-process-indicators -bool true
 # 最近のアプリを非表示
-defaults write com.apple.dock show-recents -bool false 
+defaults write com.apple.dock show-recents -bool false
 # Set `${HOME}` as the default location for new Finder windows
 # 新しいウィンドウでデフォルトでホームフォルダを開く
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
@@ -50,9 +50,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Show the hidden files （不可視ファイルを表示）
 defaults write com.apple.finder AppleShowAllFiles YES
 # 検索をデフォルトでカレントディレクトリ以下にする
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf" 
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # 拡張子の変更を警告しない
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false 
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable `Tap to click` （タップでクリックを有効にする）
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -66,11 +66,11 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClic
 
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 # 名前で並べ替えを選択時にディレクトリを前に置く
-defaults write com.apple.finder _FXSortFoldersFirst -bool true 
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Desktop で名前で並べ替えを選択時にディレクトリを前に置く
-defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true 
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
 # 絶対パスを表示
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true 
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Show the battery percentage from the menu bar （バッテリーのパーセントを表示する）
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
@@ -91,9 +91,9 @@ defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 # キーリピート開始までのタイミング
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 # スクロール速度を自分好みに
-defaults write -g com.apple.trackpad.scrolling -float 0.5882 
+defaults write -g com.apple.trackpad.scrolling -float 0.5882
 # トラックパッドの軌跡の速さを最大に設定
-defaults write -g com.apple.trackpad.scaling -int 3 
+defaults write -g com.apple.trackpad.scaling -int 3
 # 長押しで連続入力
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
@@ -114,7 +114,6 @@ defaults write -g QLPanelAnimationDuration -float 0
 ## Dockからアプリを起動するときのアニメーションを無効
 defaults write com.apple.dock launchanim -bool false
 # 動きを高速化
-defaults write -g com.apple.trackpad.scaling 3 && \
-defaults write -g com.apple.mouse.scaling 1.5 && \
-defaults write -g KeyRepeat -int 1 && \
-defaults write -g InitialKeyRepeat -int 10
+defaults write -g com.apple.trackpad.scaling 3 
+defaults write -g com.apple.mouse.scaling 1.5 
+defaults write -g KeyRepeat -int 2 

@@ -64,7 +64,7 @@ return {
             max_threshold = nil, -- If you move more than this many lines, don't animate (if `nil`, deactivate check)
             disable_float_win = false, -- Disable in floating windows
             enabled_filetypes = nil, -- Enable only for specific file types, e.g., { "lua", "vim" }
-            disabled_filetypes = nil, -- Disable for these file types, ignored if enabled_filetypes is set. e.g., { "TelescopePrompt", "NvimTree" }
+            disabled_filetypes = { "toggleterm" }, -- Disable for these file types, ignored if enabled_filetypes is set. e.g., { "TelescopePrompt", "NvimTree" }
             -- Show the position of the latest input mode positions.
             -- A value of "enter" means the position will be updated when entering the mode.
             -- A value of "leave" means the position will be updated when leaving the mode.
