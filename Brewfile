@@ -36,3 +36,4 @@ mas "GIPHY CAPTURE", id: 668208984
 mas "LINE", id: 539883307
 mas "Spark", id: 1176895642
 mas "Fuwari", id: 1187652334
+mas "Spark", id: 1176895641
