@@ -20,7 +20,7 @@ return {
             start_in_insert = true,
             insert_mappings = true,
             terminal_mappings = true,
-            persist_size = true,
+            persist_size = false,
             persist_mode = true,
             direction = 'float', -- 通常の開き方はfloat
             close_on_exit = false,

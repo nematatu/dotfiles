@@ -16,7 +16,6 @@ return {
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local on_attach = function(client)
-            vim.notify("LSP client attached: " .. client.name, vim.log.levels.INFO)
             if client.name == "ts_ls" then
                 client.server_capabilities.document_formatting = false
                 client.server_capabilities.document_range_formatting = false

@@ -22,17 +22,17 @@ require('config.lazy')
 
 require('colorscheme')
 
-vim.api.nvim_create_autocmd("WinEnter", {
-    callback = function()
-        vim.wo.winhighlight = "Normal:Normal,NormalNC:NormalNC"
-    end,
-})
-
-vim.api.nvim_create_autocmd("WinLeave", {
-    callback = function()
-        vim.wo.winhighlight = "Normal:NormalNC"
-    end,
-})
+-- vim.api.nvim_create_autocmd("WinEnter", {
+--     callback = function()
+--         vim.wo.winhighlight = "Normal:Normal,NormalNC:NormalNC"
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("WinLeave", {
+--     callback = function()
+--         vim.wo.winhighlight = "Normal:NormalNC"
+--     end,
+-- })
 
 vim.o.shell = "/bin/zsh"
 vim.opt.termguicolors = true
@@ -59,8 +59,8 @@ vim.o.updatetime = 300
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
         vim.diagnostic.open_float(nil, {
-            focus = false,      -- フォーカスを奪わない
-            scope = "cursor",   -- カーソル下の診断だけ表示
+            focus = false, -- フォーカスを奪わない
+            scope = "cursor", -- カーソル下の診断だけ表示
             border = "rounded", -- 見た目を丸く（任意）
         })
     end,

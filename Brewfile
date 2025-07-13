@@ -14,6 +14,7 @@ brew "lua-language-server"
 brew "ripgrep"
 brew "tree"
 brew "sheldon"
+brew "peco"
 
 # cask
 cask 'google-chrome'
