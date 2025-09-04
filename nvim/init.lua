@@ -59,12 +59,56 @@ vim.o.updatetime = 300
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
         vim.diagnostic.open_float(nil, {
-            focus = false, -- フォーカスを奪わない
-            scope = "cursor", -- カーソル下の診断だけ表示
+            focus = false,      -- フォーカスを奪わない
+            scope = "cursor",   -- カーソル下の診断だけ表示
             border = "rounded", -- 見た目を丸く（任意）
         })
     end,
 })
+
+function _G.test()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_is_valid(win) then
+            local bufnr = vim.api.nvim_win_get_buf(win)
+            local bufname = vim.api.nvim_buf_get_name(bufnr)
+            local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+            local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
+            print(string.format("win=%d, buf=%d, name='%s', filetype='%s', buftype='%s'",
+                win, bufnr, bufname, filetype, buftype))
+        end
+    end
+end
+
+function _G.close_diagnostic_float()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_is_valid(win) then
+            local ok, config = pcall(vim.api.nvim_win_get_config, win)
+            if ok and config.relative ~= "" then
+                local bufnr = vim.api.nvim_win_get_buf(win)
+                local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+                local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
+                local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+                -- diagnostic フロートは filetype='' & buftype='nofile' だけ閉じる
+                if filetype == "" and buftype == "nofile" and bufname == "" then
+                    vim.api.nvim_win_close(win, true)
+                end
+            end
+        end
+    end
+end
+
+-- バッファ移動（BufEnter）時に diagnostic フロートを閉じる
+-- ↓ GPTに手伝ってもらった過程
+-- https://chatgpt.com/share/68b99101-19c4-8011-bd20-a53c8b2a700a
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        if _G.close_diagnostic_float then
+            _G.close_diagnostic_float()
+        end
+    end,
+})
+
 -- 16進カラーコードをRGBに変換
 local function hex_to_rgb(hex)
     hex = hex:gsub("#", "")
@@ -113,4 +157,12 @@ vim.diagnostic.config({
     },
     update_in_insert = false,
     underline = true,
+})
+
+-- JSON ファイルでクオートを常に表示
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "json",
+    callback = function()
+        vim.opt_local.conceallevel = 0
+    end,
 })
