@@ -79,24 +79,24 @@ function _G.test()
     end
 end
 
-function _G.close_diagnostic_float()
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        if vim.api.nvim_win_is_valid(win) then
-            local ok, config = pcall(vim.api.nvim_win_get_config, win)
-            if ok and config.relative ~= "" then
-                local bufnr = vim.api.nvim_win_get_buf(win)
-                local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-                local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
-                local bufname = vim.api.nvim_buf_get_name(bufnr)
-
-                -- diagnostic フロートは filetype='' & buftype='nofile' だけ閉じる
-                if filetype == "" and buftype == "nofile" and bufname == "" then
-                    vim.api.nvim_win_close(win, true)
-                end
-            end
-        end
-    end
-end
+-- function _G.close_diagnostic_float()
+--     for _, win in ipairs(vim.api.nvim_list_wins()) do
+--         if vim.api.nvim_win_is_valid(win) then
+--             local ok, config = pcall(vim.api.nvim_win_get_config, win)
+--             if ok and config.relative ~= "" then
+--                 local bufnr = vim.api.nvim_win_get_buf(win)
+--                 local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+--                 local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
+--                 local bufname = vim.api.nvim_buf_get_name(bufnr)
+--
+--                 -- diagnostic フロートは filetype='' & buftype='nofile' だけ閉じる
+--                 if filetype == "" and buftype == "nofile" and bufname == "" then
+--                     vim.api.nvim_win_close(win, true)
+--                 end
+--             end
+--         end
+--     end
+-- end
 
 -- バッファ移動（BufEnter）時に diagnostic フロートを閉じる
 -- ↓ GPTに手伝ってもらった過程

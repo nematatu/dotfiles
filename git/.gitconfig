@@ -3,3 +3,5 @@ name = nematatu
 email = nematatu1003@gmail.com
 [ghq]
 	root = ~/src
+[init]
+	defaultBranch = main

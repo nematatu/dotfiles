@@ -8,3 +8,6 @@ bun = "latest"
 "npm:cz-git" = "latest"
 "npm:czg" = "latest"
 pnpm = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = []

@@ -120,6 +120,31 @@ vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next, { desc = "Next diagn
 
 -- 前のエラーにジャンプ（上方向）
 vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+
+local function ensure_gitsigns()
+    local ok, gitsigns = pcall(require, "gitsigns")
+    if not ok then
+        vim.notify("gitsigns が読み込まれていません", vim.log.levels.WARN)
+        return
+    end
+    return gitsigns
+end
+
+-- git 変更点へジャンプ
+vim.keymap.set("n", "<leader>ng", function()
+    local gitsigns = ensure_gitsigns()
+    if gitsigns then
+        gitsigns.next_hunk()
+    end
+end, { desc = "Next git change" })
+
+vim.keymap.set("n", "<leader>pg", function()
+    local gitsigns = ensure_gitsigns()
+    if gitsigns then
+        gitsigns.prev_hunk()
+    end
+end, { desc = "Previous git change" })
+
 vim.keymap.set("n", "<leader>dy", function()
     local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
     local col = vim.fn.col('.') - 1

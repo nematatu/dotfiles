@@ -23,7 +23,7 @@ require("lazy").setup({
         { import = "plugins.cmp" },
         { import = "plugins.lspconfig" },
         { import = "plugins.none-ls" },
-        { import = "plugins.smoothcursor" },
+        -- { import = "plugins.smoothcursor" },
         { import = "plugins.bufferline" },
         { import = "plugins.telescope" },
         { import = "plugins.fidget" },
@@ -31,7 +31,6 @@ require("lazy").setup({
         { import = "plugins.gitsigns" },
         { import = "plugins.webicons" },
         { import = "plugins.comment" },
-        { import = "plugins.scrollbar" },
         { import = "plugins.delimiters" },
         { import = "plugins.neocodeium" },
         { import = "plugins.dashboard" },
@@ -61,6 +60,10 @@ require("lazy").setup({
         { import = "plugins.octo" },
         { import = "plugins.luaship" },
         { import = "plugins.CamelCaseMotion" },
+        { import = "plugins.mdxsnap" },
+        { import = "plugins.color-highlight" },
+        { import = "plugins.magicklock" },
+        { import = "plugins.image" },
         { "nvim-lua/plenary.nvim" }, -- Common utilities
         { "windwp/nvim-ts-autotag" },
         {
