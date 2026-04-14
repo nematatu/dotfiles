@@ -41,3 +41,21 @@ esac
 # pnpm end
 
 export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+  autoload -Uz add-zsh-hook
+
+  _set_project_title() {
+        local root name
+        root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+        if [[ -n "$root" ]]; then
+                name=${root:t}   # 例: kotobad
+        else
+                name=${PWD:t}
+        fi
+
+        printf '\033]2;%s\007' "$name"
+  }
+
+  add-zsh-hook chpwd _set_project_title
+  add-zsh-hook precmd _set_project_title
+  _set_project_title

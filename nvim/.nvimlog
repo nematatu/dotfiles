@@ -1,0 +1,7 @@
+WRN 2026-02-13T17:47:02.587 ?.19892    server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/XwP86Z/nvim.19892.0
+WRN 2026-02-13T17:47:09.901 ?.19993    server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/88YoE9/nvim.19993.0
+WRN 2026-02-13T18:06:50.520 ?.41868    server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/xaRzs2/nvim.41868.0
+WRN 2026-02-13T18:07:13.212 ?.42184    server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/S5HyK8/nvim.42184.0
+WRN 2026-02-13T18:08:11.591 ?.42828    server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/vwwAQ9/nvim.42828.0
+WRN 2026-03-15T22:13:02.675 c/nvim.54426.0 server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/QTh3PS/nvim.55271.0
+WRN 2026-03-15T22:14:02.388 c/nvim.54426.0 server_start:193: Failed to start server: operation not permitted: /var/folders/g0/bqjxrwx50m155kl096cb26l40000gn/T/nvim.nematatu/X3YCmS/nvim.55607.0

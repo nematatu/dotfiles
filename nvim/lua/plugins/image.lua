@@ -171,6 +171,21 @@ return {
         end, {})
         vim.keymap.set("n", "<leader>iz", "<cmd>ImageZoom<CR>", { desc = "Image zoom" })
 
+        vim.api.nvim_create_user_command("ImageToggle", function()
+            local image = require("image")
+            if image.is_enabled() then
+                image.disable() -- 描画済み画像も消える
+                vim.notify("image.nvim: disabled")
+            else
+                image.enable()
+                vim.notify("image.nvim: enabled")
+            end
+        end, {})
+
+        vim.keymap.set("n", "<leader>it", "<cmd>ImageToggle<CR>", {
+            desc =
+            "Toggle image.nvim"
+        })
         local json = require("image/utils").json
         if not json._function_safe_encode then
             local original_encode = json.encode

@@ -1,11 +1,9 @@
-local function last_two_dirs()
-    local path = vim.fn.getcwd()
-    local parts = vim.split(path, '/')
-
-    local len = #parts
-    local last_two = table.concat({ parts[len - 1], parts[len] }, "/")
-
-    return last_two
+local function tabline_filename()
+    local name = vim.fn.expand("%:t")
+    if name == "" then
+        return "[No Name]"
+    end
+    return name
 end
 
 return {
@@ -76,24 +74,16 @@ return {
             lualine_z = {},
         },
         tabline = {
-            lualine_a = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = {
                 {
-                    'buffers',
-                    -- buffers_color = switch_color,
-                    symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 ", modified = '_󰷥', directory = ' ' },
+                    tabline_filename,
                 },
             },
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {
-                'diff'
-            },
-            lualine_y = {
-                'branch'
-            },
-            lualine_z = {
-                { 'tabs', tabs_color = switch_color },
-            },
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {},
         },
         winbar = {},
         inactive_winbar = {},

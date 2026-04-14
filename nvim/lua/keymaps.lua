@@ -3,6 +3,31 @@ local opts = { noremap = true, silent = true }
 --local keymap = vim.keymap
 local keymap = vim.api.nvim_set_keymap
 
+-- <C-j>/<C-k> の増減を常に同じ向きに固定する
+local fixed_incdec_group = vim.api.nvim_create_augroup("fixed_incdec_keymaps", { clear = true })
+local function apply_fixed_incdec_keymaps(bufnr)
+    vim.keymap.set({ "n", "x" }, "<C-j>", "<C-x>", {
+        buffer = bufnr,
+        noremap = true,
+        silent = true,
+        desc = "Decrement number",
+    })
+    vim.keymap.set({ "n", "x" }, "<C-k>", "<C-a>", {
+        buffer = bufnr,
+        noremap = true,
+        silent = true,
+        desc = "Increment number",
+    })
+end
+
+apply_fixed_incdec_keymaps(0)
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = fixed_incdec_group,
+    callback = function(args)
+        apply_fixed_incdec_keymaps(args.buf)
+    end,
+})
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -11,8 +36,6 @@ vim.g.maplocalleader = " "
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- <C-t>でターミナルが開いてしまう問題の対策
