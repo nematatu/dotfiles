@@ -1,6 +1,5 @@
 [tools]
 go = "latest"
-node = "latest"
 python = "latest"
 rust = "latest"
 bun = "latest"
@@ -8,6 +7,7 @@ bun = "latest"
 "npm:cz-git" = "latest"
 "npm:czg" = "latest"
 pnpm = "latest"
+node = "lts"
 
 [settings]
 idiomatic_version_file_enable_tools = []

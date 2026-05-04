@@ -6,11 +6,21 @@ abbr -S -qq gcm='git commit -m'
 abbr -S -qq gpo='git push origin'
 abbr -S -qq v='nvim'
 abbr -S -qq cx='codex'
+abbr -S -qq dokcer='docker'
+abbr -S -qq doker='docker'
+abbr -S -qq gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\" | tee >(pbcopy)"
 
 abbr -S -qq format="git diff --cached --name-only | grep -E '\.(js|ts|tsx|json|css)$' | xargs -r npx prettier --write"
 alias cd='cd_func'
 cd_func() {
   builtin cd "$@" && eza --icons
 }
+
+unalias cgr 2>/dev/null
+unalias cdr 2>/dev/null
+cgr() {
+  builtin cd "$(ghq list -p | fzf)"
+}
+alias cdr='cgr'
 alias imgcat='/Users/nekantatsuju/.iterm2/imgcat'
 alias ls='eza -a --icons'

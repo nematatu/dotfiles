@@ -59,3 +59,6 @@ export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
   add-zsh-hook chpwd _set_project_title
   add-zsh-hook precmd _set_project_title
   _set_project_title
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

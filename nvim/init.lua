@@ -17,6 +17,16 @@ require('base')
 require('autocmds')
 require('options')
 require('keymaps')
+
+-- Neovim 0.12 で非推奨になった API の互換ラッパー
+vim.lsp.get_buffers_by_client_id = function(client_id)
+    local client = vim.lsp.get_client_by_id(client_id)
+    if not client or not client.attached_buffers then
+        return {}
+    end
+    return vim.tbl_keys(client.attached_buffers)
+end
+
 -- プラグイン読み込み（lazy.nvim の setup を呼ぶ）
 require('config.lazy')
 
