@@ -3,6 +3,14 @@ export PATH="/opt/homebrew/bin:$PATH"
 autoload -Uz compinit
 compinit
 
+if [[ -n "$NVIM" ]]; then
+    export SHELDON_PROFILE="nvim"
+else
+    export SHELDON_PROFILE="default"
+fi
+
+[ -f "${HOME}/.zsh-vi-mode" ] && source ${HOME}/.zsh-vi-mode
+
 eval "$(sheldon source)"
 eval "$(mise activate zsh)"
 
