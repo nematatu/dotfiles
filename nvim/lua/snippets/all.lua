@@ -66,4 +66,20 @@ return {
         t({ "", "" }),
         t(":::")
     }),
+
+    s("con", {
+        t("console.log("), i(1, ""), t(")"),
+    }),
+    s("cons", {
+        t("console.log("), i(1, ""), t(")"),
+    }),
+    s("conso", {
+        t("console.log("), i(1, ""), t(")"),
+    }),
+    s("consol", {
+        t("console.log("), i(1, ""), t(")"),
+    }),
+    s("console", {
+        t("console.log("), i(1, ""), t(")"),
+    }),
 }

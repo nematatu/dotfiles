@@ -8,6 +8,7 @@ bun = "latest"
 "npm:czg" = "latest"
 pnpm = "latest"
 node = "lts"
+"npm:@openai/codex" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

@@ -119,6 +119,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "markdown_inline" },
+  callback = function(args)
+    pcall(vim.treesitter.stop, args.buf)
+    vim.bo[args.buf].syntax = "ON"
+  end,
+})
+
 -- 16進カラーコードをRGBに変換
 local function hex_to_rgb(hex)
     hex = hex:gsub("#", "")

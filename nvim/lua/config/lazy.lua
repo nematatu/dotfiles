@@ -51,7 +51,6 @@ require("lazy").setup({
         { import = "plugins.accelerated-jk" },
         { import = "plugins.discord" },
         { import = "plugins.hop" },
-        { import = "plugins.registers" },
         { import = "plugins.auto-session" },
         { import = "plugins.capture" },
         { import = "plugins.linediff" },
@@ -63,7 +62,7 @@ require("lazy").setup({
         { import = "plugins.mdxsnap" },
         { import = "plugins.color-highlight" },
         { import = "plugins.magicklock" },
-        { import = "plugins.image" },
+        -- { import = "plugins.image" },
         { "nvim-lua/plenary.nvim" }, -- Common utilities
         { "windwp/nvim-ts-autotag" },
         {

@@ -27,3 +27,8 @@ branch = "main"
 [plugins.spaceship-prompt]
 github = "denysdovhan/spaceship-prompt"
 use = ["spaceship.zsh-theme"]
+
+# vi mode
+[plugins.zsh-vi-mode]
+github = "jeffreytse/zsh-vi-mode"
+profiles = ["default"]

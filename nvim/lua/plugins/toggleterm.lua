@@ -16,12 +16,12 @@ return {
             hide_numbers = true,
             shade_filetypes = {},
             autochdir = false,
-            shade_terminals = true,
+            shade_terminals = false,
             start_in_insert = true,
             insert_mappings = true,
             terminal_mappings = true,
-            persist_size = false,
-            persist_mode = true,
+            persist_size = true,
+            persist_mode = false,
             direction = 'float', -- 通常の開き方を水平分割に変更
             close_on_exit = false,
             clear_env = false,
@@ -45,7 +45,8 @@ return {
         local Terminal = require('toggleterm.terminal').Terminal
         local codex_cmd = vim.g.codex_terminal_cmd or "codex"
 
-        vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true, desc = "Toggle terminal" })
+        vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>",
+            { noremap = true, silent = true, desc = "Toggle terminal" })
         -- Lazygit terminal
         local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
         function _lazygit_toggle()
@@ -54,22 +55,24 @@ return {
 
         vim.keymap.set("n", "<leader>lg", _lazygit_toggle, { noremap = true, silent = true })
 
+        local codex_width = function()
+            return math.floor(vim.o.columns * 0.45)
+        end
+
         -- Codex専用ターミナル（右側の縦分割）
         local codex_term = Terminal:new({
             cmd = codex_cmd,
             hidden = true,
             direction = "vertical",
-            size = 30,
             close_on_exit = false,
             on_open = function(term)
                 on_open(term)
+
                 vim.schedule(function()
                     if not term.window or not vim.api.nvim_win_is_valid(term.window) then
                         return
                     end
-                    vim.api.nvim_win_call(term.window, function()
-                        vim.cmd("wincmd L")
-                    end)
+                    vim.cmd("vertical resize " .. codex_width())
                     vim.cmd("redraw")
                 end)
             end,
