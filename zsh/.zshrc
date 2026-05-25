@@ -16,6 +16,10 @@ eval "$(mise activate zsh)"
 
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
+for file in "$HOME/dotfiles/zsh/conf.d/"*.zsh; do
+    [[ -r "$file" ]] && source "$file"
+done
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow'
 export FZF_DEFAULT_OPTS="
 --multi --border=rounded --height 85% --layout=reverse
