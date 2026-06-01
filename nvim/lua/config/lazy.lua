@@ -63,6 +63,7 @@ require("lazy").setup({
         { import = "plugins.color-highlight" },
         { import = "plugins.magicklock" },
         -- { import = "plugins.image" },
+        { import = "plugins.img-clip" },
         { "nvim-lua/plenary.nvim" }, -- Common utilities
         { "windwp/nvim-ts-autotag" },
         {
@@ -72,7 +73,7 @@ require("lazy").setup({
             config = function()
                 require("vscode_modern").setup({
                     cursorline = true,
-                    transparent_background = false,
+                    transparent_background = true,
                     nvim_tree_darker = true,
                 })
                 vim.cmd.colorscheme("vscode_modern")

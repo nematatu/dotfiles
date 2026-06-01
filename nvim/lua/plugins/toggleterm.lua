@@ -17,6 +17,15 @@ return {
             shade_filetypes = {},
             autochdir = false,
             shade_terminals = false,
+            highlights = {
+                NormalFloat = {
+                    guibg = "#252526",
+                },
+                FloatBorder = {
+                    guifg = "#666666",
+                    guibg = "#252526",
+                },
+            },
             start_in_insert = true,
             insert_mappings = true,
             terminal_mappings = true,
@@ -29,7 +38,7 @@ return {
             auto_scroll = true,
             float_opts = {
                 border = 'curved',
-                winblend = 4,
+                winblend = 0,
                 title_pos = 'center',
             },
             winbar = {

@@ -1,5 +1,8 @@
 return {
     "xiyaowong/transparent.nvim",
+    init = function()
+        vim.g.transparent_enabled = true
+    end,
     config = function()
         require("transparent").setup({
             -- table: default groups
