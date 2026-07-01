@@ -35,7 +35,7 @@ return {
             close_on_exit = false,
             clear_env = false,
             shell = '/bin/zsh',
-            auto_scroll = true,
+            auto_scroll = false,
             float_opts = {
                 border = 'curved',
                 winblend = 0,

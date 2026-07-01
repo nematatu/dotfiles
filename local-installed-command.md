@@ -30,3 +30,8 @@ zenn on  main [!] via ⬢ v24.16.0 via 🍞 v1.3.14 took 2.7s
 .
 
 ```
+
+### ghost
+バックグラウンドプロセス管理ツール
+
+[レポジトリ](https://github.com/skanehira/ghost)
