@@ -34,4 +34,22 @@ backup_if_needed "${HOME}/.config/sheldon/plugins.toml"
 stow --dir="${DOTFILES_DIR}" --target="${HOME}" --restow \
     zsh git czg nvim mise sheldon
 
+require_stowed_file() {
+    local target="$1"
+    if [[ ! -e "$target" ]]; then
+        echo "Error: stow did not create required file: ${target}" >&2
+        exit 1
+    fi
+}
+
+require_stowed_file "${HOME}/.zshrc"
+require_stowed_file "${HOME}/.zprofile"
+require_stowed_file "${HOME}/.aliases"
+require_stowed_file "${HOME}/.gitconfig"
+require_stowed_file "${HOME}/.czrc"
+require_stowed_file "${HOME}/.config/zsh/conf.d/man.zsh"
+require_stowed_file "${HOME}/.config/nvim/init.lua"
+require_stowed_file "${HOME}/.config/mise/mise.toml"
+require_stowed_file "${HOME}/.config/sheldon/plugins.toml"
+
 echo "Common dotfiles linked with stow."

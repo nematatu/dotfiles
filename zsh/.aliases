@@ -14,6 +14,9 @@ add_abbr v='nvim'
 add_abbr cx='codex'
 add_abbr dokcer='docker'
 add_abbr doker='docker'
+
+alias v='nvim'
+alias cx='codex'
 if command -v pbcopy >/dev/null 2>&1; then
   add_abbr gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\" | tee >(pbcopy)"
 elif command -v clip.exe >/dev/null 2>&1; then
