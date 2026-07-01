@@ -7,6 +7,9 @@ case "$(uname -s)" in
     ;;
 esac
 
+ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$HOME/.config/zsh}"
+[ -f "$ZSH_CONFIG_DIR/conf.d/terminal.zsh" ] && source "$ZSH_CONFIG_DIR/conf.d/terminal.zsh"
+
 autoload -Uz compinit
 compinit
 
@@ -29,7 +32,6 @@ fi
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
 export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$HOME/.config/zsh}"
 for file in "$ZSH_CONFIG_DIR/conf.d/"*.zsh; do
     [[ -r "$file" ]] && source "$file"
 done
