@@ -59,26 +59,6 @@ if command -v mise >/dev/null 2>&1; then
     add_mise_bin_paths
 fi
 
-if command -v mise >/dev/null 2>&1; then
-    GO_PATH="$(mise exec -C "$HOME" -- go env GOPATH 2>/dev/null || true)"
-    if [[ -n "$GO_PATH" ]]; then
-        export PATH="${GO_PATH}/bin:${PATH}"
-    fi
-    # ghq/lazygit are apt-first above; go install is a fallback for Ubuntu repos that do not provide them.
-    command -v ghq >/dev/null 2>&1 || mise exec -C "$HOME" -- go install github.com/x-motemen/ghq@latest
-    command -v lazygit >/dev/null 2>&1 || mise exec -C "$HOME" -- go install github.com/jesseduffield/lazygit@latest
-fi
-
-if ! command -v sheldon >/dev/null 2>&1; then
-    if command -v mise >/dev/null 2>&1; then
-        mise exec -C "$HOME" -- cargo install sheldon --locked
-        add_mise_bin_paths
-    else
-        echo "mise が見つからないため sheldon をインストールできませんでした。" >&2
-        echo "zsh 自体は起動できますが、プラグインは sheldon インストール後に有効になります。" >&2
-    fi
-fi
-
 if command -v zsh >/dev/null 2>&1; then
     ZSH_PATH="$(command -v zsh)"
     if [[ "${SHELL:-}" != "$ZSH_PATH" ]]; then

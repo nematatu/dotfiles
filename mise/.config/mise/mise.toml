@@ -13,6 +13,10 @@ deno = "latest"
 "cargo:https://github.com/skanehira/ghost.git" = "HEAD"
 ni = "latest"
 rclone = "latest"
+ghq = "latest"
+lazygit = "latest"
+sheldon = "latest"
+yazi = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
