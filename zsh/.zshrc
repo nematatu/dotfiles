@@ -1,4 +1,11 @@
-export PATH="/opt/homebrew/bin:$PATH"
+case "$(uname -s)" in
+  Darwin)
+    export PATH="/opt/homebrew/bin:$PATH"
+    ;;
+  Linux)
+    export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
+    ;;
+esac
 
 autoload -Uz compinit
 compinit
@@ -11,12 +18,19 @@ fi
 
 [ -f "${HOME}/.zsh-vi-mode" ] && source ${HOME}/.zsh-vi-mode
 
-eval "$(sheldon source)"
-eval "$(mise activate zsh)"
+if command -v sheldon >/dev/null 2>&1; then
+  eval "$(sheldon source)"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
 
-for file in "$HOME/dotfiles/zsh/conf.d/"*.zsh; do
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$HOME/.config/zsh}"
+for file in "$ZSH_CONFIG_DIR/conf.d/"*.zsh; do
     [[ -r "$file" ]] && source "$file"
 done
 
@@ -41,18 +55,27 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --color=always {} | head -2
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function gcd() {
-  cd $(ghq list -p | fzf)
+  if command -v ghq >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
+    cd $(ghq list -p | fzf)
+  else
+    echo "ghq and fzf are required."
+    return 1
+  fi
 }
 
-# pnpm
-export PNPM_HOME="/Users/nematatu/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  # pnpm
+  export PNPM_HOME="/Users/nematatu/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  # pnpm end
+fi
 
-export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+if [[ "$(uname -s)" == "Darwin" ]] && command -v brew >/dev/null 2>&1; then
+  export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:${DYLD_LIBRARY_PATH:-}"
+fi
   autoload -Uz add-zsh-hook
 
   _set_project_title() {
@@ -72,11 +95,17 @@ export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
   add-zsh-hook precmd _set_project_title
   _set_project_title
 
-# Vite+ bin (https://viteplus.dev)
-. "$HOME/.vite-plus/env"
+if [[ -f "$HOME/.vite-plus/env" ]]; then
+  # Vite+ bin (https://viteplus.dev)
+  . "$HOME/.vite-plus/env"
+fi
 
 ## Yaziシェルラッパー
 function y() {
+  if ! command -v yazi >/dev/null 2>&1; then
+    echo "yazi is required."
+    return 1
+  fi
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
@@ -84,18 +113,19 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/nematatu/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/nematatu/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/nematatu/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/nematatu/miniforge3/bin:$PATH"
-    fi
+if [[ -x "$HOME/miniforge3/bin/conda" ]]; then
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$("$HOME/miniforge3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]; then
+          . "$HOME/miniforge3/etc/profile.d/conda.sh"
+      else
+          export PATH="$HOME/miniforge3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-

@@ -1,26 +1,48 @@
-abbr -S -qq systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
+add_abbr() {
+  command -v abbr >/dev/null 2>&1 && abbr -S -qq "$@"
+}
 
-abbr -S -qq g='git'
-abbr -S -qq ga.='git add .'
-abbr -S -qq gcm='git commit -m'
-abbr -S -qq gpo='git push origin'
-abbr -S -qq v='nvim'
-abbr -S -qq cx='codex'
-abbr -S -qq dokcer='docker'
-abbr -S -qq doker='docker'
-abbr -S -qq gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\" | tee >(pbcopy)"
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  add_abbr systemv='system_profiler SPSoftwareDataType | grep "System Version" | pbcopy'
+fi
 
-abbr -S -qq format="git diff --cached --name-only | grep -E '\.(js|ts|tsx|json|css)$' | xargs -r npx prettier --write"
+add_abbr g='git'
+add_abbr ga.='git add .'
+add_abbr gcm='git commit -m'
+add_abbr gpo='git push origin'
+add_abbr v='nvim'
+add_abbr cx='codex'
+add_abbr dokcer='docker'
+add_abbr doker='docker'
+if command -v pbcopy >/dev/null 2>&1; then
+  add_abbr gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\" | tee >(pbcopy)"
+elif command -v clip.exe >/dev/null 2>&1; then
+  add_abbr gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\" | tee >(clip.exe)"
+else
+  add_abbr gentoken="node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\""
+fi
+
+add_abbr format="git diff --cached --name-only | grep -E '\.(js|ts|tsx|json|css)$' | xargs -r npx prettier --write"
 alias cd='cd_func'
 cd_func() {
-  builtin cd "$@" && eza --icons
+  builtin cd "$@" || return
+  if command -v eza >/dev/null 2>&1; then
+    eza --icons
+  else
+    ls -a
+  fi
 }
 
-unalias cgr 2>/dev/null
 unalias cdr 2>/dev/null
-cgr() {
+cdr() {
+  if ! command -v ghq >/dev/null 2>&1 || ! command -v fzf >/dev/null 2>&1; then
+    echo "ghq and fzf are required."
+    return 1
+  fi
   builtin cd "$(ghq list -p | fzf)"
 }
-alias cdr='cgr'
-alias imgcat='/Users/nekantatsuju/.iterm2/imgcat'
-alias ls='eza -a --icons'
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza -a --icons'
+else
+  alias ls='ls -a'
+fi

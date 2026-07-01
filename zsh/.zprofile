@@ -11,24 +11,30 @@ if [ -d "/usr/local/bin" ] ; then
     PATH="/usr/local/bin:$PATH"
 fi
 
-# Set brew path
-if [ -z "$(command -v brew)" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  # Set brew path
+  if ! command -v brew >/dev/null 2>&1 && [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
+  # prioritize brew path (brew 管理の git などを優先させるため)
+  export PATH="/opt/homebrew/bin/:$PATH"
+
+  # Set vscode path
+  if ! command -v code >/dev/null 2>&1; then
+    export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+  fi
+else
+  export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
 fi
 
 # Set Sheldon
-eval "$(sheldon source)"
-
-# prioritize brew path (brew 管理の git などを優先させるため)
-export PATH="/opt/homebrew/bin/:$PATH"
-
-# Set vscode path
-if [ -z "$(command -v code)" ]; then
-  export PATH="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH"
+if command -v sheldon >/dev/null 2>&1; then
+  eval "$(sheldon source)"
 fi
 
 # Set mise path
-if [ -n "$(command -v mise)" ]; then
+if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 

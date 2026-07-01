@@ -8,7 +8,8 @@ local function template(ctx)
   local obj = "r2:blog-images/paste-images/" .. vim.fn.fnamemodify(avif, ":t")
   local rcl = vim.fn.glob(vim.fn.expand("~/.local/share/mise/installs/rclone/latest/rclone-*/rclone")):match("[^\n]+") or "rclone"
   local p3, srgb = "/System/Library/ColorSync/Profiles/Display P3.icc", "/System/Library/ColorSync/Profiles/sRGB Profile.icc"
-  local m = { "magick", ctx.file_path }
+  local magick = vim.fn.executable("magick") == 1 and "magick" or "convert"
+  local m = { magick, ctx.file_path }
   if vim.fn.filereadable(p3) == 1 and vim.fn.filereadable(srgb) == 1 then
     vim.list_extend(m, { "-profile", p3, "-profile", srgb })
   else
