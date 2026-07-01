@@ -21,7 +21,7 @@ sudo apt install -y \
     ripgrep fd-find fzf bat neovim tmux stow \
     jq htop
 
-for package in gh eza ghq lazygit nvtop imagemagick libmagickwand-dev libavif-bin yazi; do
+for package in gh eza nvtop imagemagick libmagickwand-dev libavif-bin; do
     sudo apt install -y "$package" || echo "Warning: apt package ${package} could not be installed." >&2
 done
 
@@ -69,7 +69,7 @@ if command -v zsh >/dev/null 2>&1; then
     fi
 fi
 
-for command_name in zsh git nvim rg fd bat fzf stow gh ghq lazygit mise sheldon node python go cargo clang-format avifenc rclone codex codex-acp yazi; do
+for command_name in zsh git nvim rg fd bat fzf stow gh ghq lazygit mise sheldon node python go cargo clang-format avifenc rclone codex yazi; do
     command -v "$command_name" >/dev/null 2>&1 || mise exec -C "$HOME" -- bash -lc "command -v '$command_name'" >/dev/null 2>&1 || echo "Warning: ${command_name} is not available on PATH." >&2
 done
 
