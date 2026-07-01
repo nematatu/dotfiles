@@ -43,6 +43,7 @@ export PATH="${HOME}/.local/bin:${HOME}/.local/share/mise/bin:${PATH}"
 
 add_mise_bin_paths() {
     command -v mise >/dev/null 2>&1 || return 0
+    eval "$(mise env -s bash --cd "$HOME" 2>/dev/null || true)"
     while IFS= read -r bin_path; do
         if [[ -n "$bin_path" && -d "$bin_path" ]]; then
             case ":$PATH:" in
