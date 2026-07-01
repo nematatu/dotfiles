@@ -41,23 +41,40 @@ export PATH="${HOME}/.local/bin:${HOME}/.local/share/mise/bin:${PATH}"
 
 "${SCRIPT_DIR}/link-common.sh"
 
+add_mise_bin_paths() {
+    command -v mise >/dev/null 2>&1 || return 0
+    while IFS= read -r bin_path; do
+        if [[ -n "$bin_path" && -d "$bin_path" ]]; then
+            case ":$PATH:" in
+                *":$bin_path:"*) ;;
+                *) export PATH="$bin_path:$PATH" ;;
+            esac
+        fi
+    done < <(mise bin-paths --cd "$HOME" 2>/dev/null || true)
+}
+
 if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate bash)"
     mise install --cd "$HOME" || echo "Warning: mise install failed. 必要なツールは後で mise install --cd \"$HOME\" を再実行してください。" >&2
+    add_mise_bin_paths
 fi
 
-if command -v go >/dev/null 2>&1; then
-    export PATH="$(go env GOPATH)/bin:${PATH}"
+if command -v mise >/dev/null 2>&1; then
+    GO_PATH="$(mise exec -C "$HOME" -- go env GOPATH 2>/dev/null || true)"
+    if [[ -n "$GO_PATH" ]]; then
+        export PATH="${GO_PATH}/bin:${PATH}"
+    fi
     # ghq/lazygit are apt-first above; go install is a fallback for Ubuntu repos that do not provide them.
-    command -v ghq >/dev/null 2>&1 || go install github.com/x-motemen/ghq@latest
-    command -v lazygit >/dev/null 2>&1 || go install github.com/jesseduffield/lazygit@latest
+    command -v ghq >/dev/null 2>&1 || mise exec -C "$HOME" -- go install github.com/x-motemen/ghq@latest
+    command -v lazygit >/dev/null 2>&1 || mise exec -C "$HOME" -- go install github.com/jesseduffield/lazygit@latest
 fi
 
 if ! command -v sheldon >/dev/null 2>&1; then
-    if command -v cargo >/dev/null 2>&1; then
-        cargo install sheldon --locked
+    if command -v mise >/dev/null 2>&1; then
+        mise exec -C "$HOME" -- cargo install sheldon --locked
+        add_mise_bin_paths
     else
-        echo "cargo が見つからないため sheldon をインストールできませんでした。" >&2
+        echo "mise が見つからないため sheldon をインストールできませんでした。" >&2
         echo "zsh 自体は起動できますが、プラグインは sheldon インストール後に有効になります。" >&2
     fi
 fi

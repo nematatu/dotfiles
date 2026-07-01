@@ -1,9 +1,9 @@
 case "$(uname -s)" in
   Darwin)
-    export PATH="/opt/homebrew/bin:$PATH"
+    export PATH="/opt/homebrew/bin:$HOME/.cargo/bin:$PATH"
     ;;
   Linux)
-    export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
+    export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
     ;;
 esac
 
@@ -18,12 +18,12 @@ fi
 
 [ -f "${HOME}/.zsh-vi-mode" ] && source ${HOME}/.zsh-vi-mode
 
-if command -v sheldon >/dev/null 2>&1; then
-  eval "$(sheldon source)"
-fi
-
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
+fi
+
+if command -v sheldon >/dev/null 2>&1; then
+  eval "$(sheldon source)"
 fi
 
 [ -f ${HOME}/.aliases ] && source ${HOME}/.aliases
