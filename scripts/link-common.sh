@@ -18,6 +18,27 @@ backup_if_needed() {
     fi
 }
 
+remove_dotfiles_symlink() {
+    local target="$1"
+    local link_target resolved_target
+
+    [[ -L "$target" ]] || return 0
+
+    link_target="$(readlink "$target")"
+    if [[ "$link_target" != /* ]]; then
+        link_target="$(cd "$(dirname "$target")" && cd "$(dirname "$link_target")" 2>/dev/null && printf "%s/%s" "$(pwd -P)" "$(basename "$link_target")")" || return 0
+    fi
+    resolved_target="$(cd "$(dirname "$link_target")" 2>/dev/null && printf "%s/%s" "$(pwd -P)" "$(basename "$link_target")")" || return 0
+
+    case "$resolved_target" in
+        "${DOTFILES_DIR}"|"${DOTFILES_DIR}"/*)
+            echo "Removing old stow symlink: ${target} -> ${link_target}"
+            unlink "$target"
+            ;;
+    esac
+}
+
+remove_dotfiles_symlink "${HOME}/.config"
 mkdir -p "${HOME}/.config"
 
 backup_if_needed "${HOME}/.zshrc"
