@@ -31,7 +31,7 @@ backup_if_needed "${HOME}/.config/nvim"
 backup_if_needed "${HOME}/.config/mise/mise.toml"
 backup_if_needed "${HOME}/.config/sheldon/plugins.toml"
 
-stow --dir="${DOTFILES_DIR}" --target="${HOME}" --restow \
+stow --no-folding --dir="${DOTFILES_DIR}" --target="${HOME}" --restow \
     zsh git czg nvim mise sheldon
 
 require_stowed_file() {
