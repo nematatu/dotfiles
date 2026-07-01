@@ -25,7 +25,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
   fi
 else
-  export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
+  export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/.local/share/mise/shims:$HOME/.cargo/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
 fi
 
 # Set mise path

@@ -3,7 +3,7 @@ case "$(uname -s)" in
     export PATH="/opt/homebrew/bin:$HOME/.cargo/bin:$PATH"
     ;;
   Linux)
-    export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
+    export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$HOME/.local/share/mise/shims:$HOME/.cargo/bin:$HOME/go/bin:/usr/lib/wsl/lib:$PATH"
     ;;
 esac
 

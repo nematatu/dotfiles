@@ -33,11 +33,11 @@ if ! command -v bat >/dev/null 2>&1 && command -v batcat >/dev/null 2>&1; then
     ln -fnsv "$(command -v batcat)" "${HOME}/.local/bin/bat"
 fi
 
+export PATH="${HOME}/.local/bin:${HOME}/.local/share/mise/bin:${HOME}/.local/share/mise/shims:${PATH}"
+
 if ! command -v mise >/dev/null 2>&1; then
     curl https://mise.run | sh
 fi
-
-export PATH="${HOME}/.local/bin:${HOME}/.local/share/mise/bin:${PATH}"
 
 "${SCRIPT_DIR}/link-common.sh"
 
@@ -55,9 +55,10 @@ add_mise_bin_paths() {
 }
 
 if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate bash)"
     mise install --cd "$HOME" || echo "Warning: mise install failed. 必要なツールは後で mise install --cd \"$HOME\" を再実行してください。" >&2
+    mise reshim || true
     add_mise_bin_paths
+    hash -r
 fi
 
 if command -v zsh >/dev/null 2>&1; then
@@ -69,7 +70,7 @@ if command -v zsh >/dev/null 2>&1; then
 fi
 
 for command_name in zsh git nvim rg fd bat fzf stow gh ghq lazygit mise sheldon node python go cargo clang-format avifenc rclone codex codex-acp yazi; do
-    command -v "$command_name" >/dev/null 2>&1 || echo "Warning: ${command_name} is not available on PATH." >&2
+    command -v "$command_name" >/dev/null 2>&1 || mise exec -C "$HOME" -- bash -lc "command -v '$command_name'" >/dev/null 2>&1 || echo "Warning: ${command_name} is not available on PATH." >&2
 done
 
 cat <<'EOF'
