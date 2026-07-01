@@ -56,6 +56,12 @@ add_mise_bin_paths() {
 
 if command -v mise >/dev/null 2>&1; then
     mise install --cd "$HOME" || echo "Warning: mise install failed. 必要なツールは後で mise install --cd \"$HOME\" を再実行してください。" >&2
+    mise install \
+        aqua:x-motemen/ghq@latest \
+        aqua:jesseduffield/lazygit@latest \
+        aqua:rossmacarthur/sheldon@latest \
+        aqua:sxyazi/yazi@latest \
+        || echo "Warning: mise install for aqua tools failed." >&2
     mise reshim || true
     add_mise_bin_paths
     hash -r
